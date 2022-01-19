@@ -1,0 +1,18 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<BorlandProject>
+	<Transactions>
+    <Transaction>2021/09/30 09:56:28.000.324,=D:\Users\T-Gamer\Documentos\Embarcadero\Studio\Projects\Unit1.pas</Transaction>
+    <Transaction>2021/10/08 11:48:44.000.687,=D:\Users\T-Gamer\Documentos\Embarcadero\Studio\Projects\Unit1.pas</Transaction>
+    <Transaction>2021/11/15 22:40:13.000.402,=D:\Users\T-Gamer\Documentos\Embarcadero\Studio\Projects\Unit1.pas</Transaction>
+    <Transaction>2021/11/18 21:44:10.000.967,=D:\Users\T-Gamer\Documentos\Embarcadero\Studio\Projects\Unit1.pas</Transaction>
+    <Transaction>2021/11/19 14:11:11.000.477,=D:\Users\T-Gamer\Documentos\Embarcadero\Studio\Projects\Unit1.pas</Transaction>
+    <Transaction>2021/11/20 20:27:43.000.049,=D:\Users\T-Gamer\Documentos\Embarcadero\Studio\Projects\Unit1.pas</Transaction>
+    <Transaction>2021/11/20 21:04:51.000.729,C:\PROJETOS\FMX\Record Video\Rec Video Intent\Unit1.pas=D:\Users\T-Gamer\Documentos\Embarcadero\Studio\Projects\Unit1.pas</Transaction>
+    <Transaction>2021/11/20 21:04:51.000.729,C:\PROJETOS\FMX\Record Video\Rec Video Intent\Unit1.fmx=D:\Users\T-Gamer\Documentos\Embarcadero\Studio\Projects\Unit1.fmx</Transaction>
+    <Transaction>2021/11/20 21:04:53.000.490,C:\PROJETOS\FMX\Record Video\Rec Video Intent\Project1.dproj=D:\Users\T-Gamer\Documentos\Embarcadero\Studio\Projects\Project1.dproj</Transaction>
+    <Transaction>2022/01/19 12:45:46.000.803,C:\PROJETOS\FMX\Record Video\Rec Video Intent\Project1.dproj=C:\PROJETOS\FMX\Record Video\Rec Video Intent\VideoManager.dproj</Transaction>
+  </Transactions>
+	<ActiveMobileDevice>
+		<NoProfile iOSSimulator="iPhone5" Android="ZF52352C7D" Android64="ZF52352C7D"/>
+	</ActiveMobileDevice>
+</BorlandProject>
