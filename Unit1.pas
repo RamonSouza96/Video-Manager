@@ -21,7 +21,8 @@ uses
   FMX.Media,
   Androidapi.JNI.Media,
   FMX.Surfaces,
-  FMX.Helpers.Android;
+  FMX.Helpers.Android,
+  Androidapi.JNI.Support;
 
 
   const
@@ -231,7 +232,7 @@ Begin
     Margins.Bottom       := 20;
     Size.Height          := 240;
     TagString            := PatchFile;
-    Fill.Kind            := Fill.Kind.bkBitmap;
+    Fill.Kind            := TBrushKind.Bitmap;
     Stroke.Kind          := TBrushKind.None;
     Fill.Bitmap.WrapMode := TWrapMode.TileStretch;
     XRadius              := 10;
@@ -405,24 +406,26 @@ End;
 Procedure TFrmMain.Rec; //IMPORTANTE
 var
   VideoIntent: JIntent;
-  videoUri: Jnet_Uri;
-  AFile: JFile;
-  FileName: TFileName;
+  VideoUri   : Jnet_Uri;
+  AFile      : JFile;
+  FileName   : TFileName;
+  LAuthority : JString;
 begin
 
   TMessageManager.DefaultManager.SubscribeToMessage(TMessageResultNotification, HandleActivityMessage);//responsavel por receber um retorno
   VideoIntent := TJIntent.JavaClass.init(TJMediaStore.JavaClass.ACTION_VIDEO_CAPTURE);
+  LAuthority := StringToJString(JStringToString(TAndroidHelper.Context.getApplicationContext.getPackageName) + '.fileprovider');
+  vFileName   :=formatdatetime('dd-mm-yyyy_hh.mm.ss', now);
 
-  vFileName:=formatdatetime('dd-mm-yyyy_hh.mm.ss', now);
-
-  if (VideoIntent.resolveActivity(SharedActivityContext.getPackageManager()) <> nil) then
+ if (VideoIntent.resolveActivity(TAndroidHelper.Context.getPackageManager()) <> nil) then
   begin
-    FileName := System.IOUtils.TPath.Combine(System.IOUtils.TPath.GetSharedDocumentsPath, vFileName+'.mp4');
-    vPatchName:= FileName;
-    AFile := TJFile.JavaClass.init(StringToJString(FileName));
-    videoUri := TJnet_Uri.JavaClass.fromFile(AFile);
+    FileName   := System.IOUtils.TPath.Combine(System.IOUtils.TPath.GetSharedDocumentsPath, vFileName+'.mp4');
+    vPatchName := FileName;
+    AFile      := TJFile.JavaClass.init(StringToJString(FileName));
+    VideoUri   := TJFileProvider.JavaClass.getUriForFile(TAndroidHelper.Context, LAuthority, TJFile.JavaClass.init(StringToJString(FileName)));
+    VideoIntent.addFlags(TJIntent.JavaClass.FLAG_GRANT_READ_URI_PERMISSION);
     VideoIntent.putExtra(TJMediaStore.JavaClass.EXTRA_OUTPUT,TJParcelable.Wrap((videoUri as ILocalObject).GetObjectID));
-    SharedActivity.startActivityForResult(VideoIntent, RECORD_VIDEO);
+    TAndroidHelper.Activity.StartActivityForResult(VideoIntent, RECORD_VIDEO);
   end;
 
 End;

@@ -19,6 +19,7 @@
         android:hardwareAccelerated="%hardwareAccelerated%"
         android:resizeableActivity="false"
         android:allowClearUserData="true"
+        android:grantUriPermissions="true"
         android:requestLegacyExternalStorage="true">
 
         <%provider%>
